@@ -1,0 +1,71 @@
+@import "../../node_modules/bootstrap/scss/functions";
+
+// Sobrescrevendo variáveis
+
+$font-size-base: 1rem;
+$font-size-sm: $font-size-base * 0.875;
+$font-size-lg: $font-size-base * 1.125;
+
+$enable-rfs: false;
+
+$font-family-sans-serif: "Montserrat", sans-serif;
+
+
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/variables-dark";
+
+// Sobrescrevendo maps
+$font-sizes: (
+  1: $font-size-base * 3,
+  2: $font-size-base * 2,
+  3: $font-size-base * 1.5,
+  4: $font-size-lg,
+  5: $font-size-base,
+  6: $font-size-sm
+);
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer * 0.75,
+  4: $spacer,
+  5: $spacer * 1.5,
+  6: $spacer * 2,
+  7: $spacer * 4,
+);
+
+$form-validation-states: map-remove($form-validation-states, "valid");
+
+@import "../../node_modules/bootstrap/scss/maps";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/root";
+
+@import "../../node_modules/bootstrap/scss/utilities";
+@import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/type";
+@import "../../node_modules/bootstrap/scss/images";
+@import "../../node_modules/bootstrap/scss/containers";
+@import "../../node_modules/bootstrap/scss/grid";
+@import "../../node_modules/bootstrap/scss/helpers";
+@import "../../node_modules/bootstrap/scss/buttons";
+@import "../../node_modules/bootstrap/scss/transitions";
+@import "../../node_modules/bootstrap/scss/navbar";
+@import "../../node_modules/bootstrap/scss/nav";
+@import "../../node_modules/bootstrap/scss/card";
+@import "../../node_modules/bootstrap/scss/spinners";
+@import "../../node_modules/bootstrap/scss/modal";
+@import "../../node_modules/bootstrap/scss/alert";
+@import "../../node_modules/bootstrap/scss/close";
+@import "../../node_modules/bootstrap/scss/forms";
+@import "../../node_modules/bootstrap/scss/images";
+@import "../../node_modules/bootstrap/scss/placeholders";
+
+@import "../../node_modules/bootstrap/scss/utilities/api";
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  .max-#{$breakpoint} {
+    max-width: map-get($grid-breakpoints, $breakpoint);
+  }
+}
