@@ -1,0 +1,9 @@
+
+@import "../../node_modules/toastify-js/src/toastify.css";
+
+.toastify {
+  max-width: calc(75% - 20px) !important;
+  
+  // Para possibilitar a customização via classes do bootstrap
+  background-image: none !important;
+}
