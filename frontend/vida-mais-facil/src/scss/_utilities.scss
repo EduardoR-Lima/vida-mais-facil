@@ -1,0 +1,32 @@
+// Backgrounds
+.bg-light-1 {
+  background-color: #{$bg-light-1};
+}
+
+.bg-light-2 {
+  background-color: #{$bg-light-2};
+}
+
+.page-bg-gradient {
+  background: linear-gradient(#{$bg-light-1}, #{$bg-light-2});
+}
+
+// Customização da imagem da logo
+.logo {
+  aspect-ratio: auto;
+  height: 3rem !important;
+}
+
+// Propriedades de scroll
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+.rm-scrollbar {
+  scrollbar-width: none;
+}
+
+// Propriedades relacionadas a navbar
+.navbar-margin {
+  margin-top: 5rem;
+}

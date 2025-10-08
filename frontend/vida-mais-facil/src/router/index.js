@@ -25,29 +25,47 @@ const router = createRouter({
     {
       path: '/',
       component: () => import('../views/LandingPageView.vue'),
+      meta: {
+        hasNavbar: true,
+      },
     },
     {
       path: '/login',
       component: () => import('../views/LoginView.vue'),
       beforeEnter: [requiresLogout],
+      meta: {
+        hasNavbar: false,
+      },
     },
     {
       path: '/cadastro/cliente',
       component: () => import('../views/CadastroClienteView.vue'),
+      meta: {
+        hasNavbar: false,
+      },
     },
     {
       path: '/cadastro/profissional',
       component: () => import('../views/CadastroProfissionalView.vue'),
+      meta: {
+        hasNavbar: false,
+      },
     },
     {
       path: '/dashboard',
       component: () => import('../views/DashboardView.vue'),
       beforeEnter: [requiresLogin],
+      meta: {
+        hasNavbar: true,
+      },
     },
     {
       path: '/agendamento',
       component: () => import('../views/AgendamentoView.vue'),
       beforeEnter: [requiresLogin],
+      meta: {
+        hasNavbar: true,
+      },
     }
   ],
 })
