@@ -1,7 +1,9 @@
 import { useCurrentSession } from '@/composables/useCurrentSession'
+import { useToast } from '@/composables/useToast'
 import { createRouter, createWebHistory } from 'vue-router'
 
-const { isValidSession } = useCurrentSession()
+const { isValidSession, isExpiredToken } = useCurrentSession()
+const { pushToast } = useToast()
 
 function requiresLogin(to) {
   if (!isValidSession()) {
@@ -24,6 +26,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
+      name: 'Home',
       component: () => import('../views/LandingPageView.vue'),
       meta: {
         hasNavbar: true,
@@ -31,6 +34,7 @@ const router = createRouter({
     },
     {
       path: '/login',
+      name: 'Login',
       component: () => import('../views/LoginView.vue'),
       beforeEnter: [requiresLogout],
       meta: {
@@ -39,6 +43,7 @@ const router = createRouter({
     },
     {
       path: '/cadastro/cliente',
+      name: 'CadastroCliente',
       component: () => import('../views/CadastroClienteView.vue'),
       meta: {
         hasNavbar: false,
@@ -46,6 +51,7 @@ const router = createRouter({
     },
     {
       path: '/cadastro/profissional',
+      name: 'CadastroProfissional',
       component: () => import('../views/CadastroProfissionalView.vue'),
       meta: {
         hasNavbar: false,
@@ -53,6 +59,7 @@ const router = createRouter({
     },
     {
       path: '/dashboard',
+      name: 'Dashboard',
       component: () => import('../views/DashboardView.vue'),
       beforeEnter: [requiresLogin],
       meta: {
@@ -61,6 +68,7 @@ const router = createRouter({
     },
     {
       path: '/agendamento',
+      name: 'Agendamento',
       component: () => import('../views/AgendamentoView.vue'),
       beforeEnter: [requiresLogin],
       meta: {
@@ -68,6 +76,13 @@ const router = createRouter({
       },
     }
   ],
+})
+
+router.afterEach((to, from) => {
+  // Informar que a sessão expirou em casos de redirect para a página de login
+  if (to.name == 'Login' && isExpiredToken()) {
+    pushToast('warning', 'A sessão expirou')
+  }
 })
 
 export default router
