@@ -5,9 +5,6 @@ export function useToast() {
     const className = `bg-${level}-subtle border border-${level}-subtle rounded-2 `
                      + `text-${level}-emphasis`
 
-    console.log(className)
-
-
     Toastify({
       text: message,
       duration: duration,
