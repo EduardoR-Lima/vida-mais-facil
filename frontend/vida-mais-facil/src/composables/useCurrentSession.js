@@ -32,6 +32,10 @@ const userName = computed(() => currentSession.value.cliente?.nome || '')
 const sessionToken = computed(() => currentSession.value.access_token || '')
 
 function isExpiredToken() {
+  if (!currentSession.value.exp) {
+    return false
+  }
+
   const remaining = new Date(currentSession.value.exp) - new Date()
   return remaining < EXPIRE_MARGIN
 }
@@ -42,7 +46,6 @@ function isValidSession() {
   }
 
   if (isExpiredToken()) {
-    removeCurrentSession()
     return false
   }
 
@@ -57,5 +60,6 @@ export function useCurrentSession() {
     registerNewSession,
     removeCurrentSession,
     isValidSession,
+    isExpiredToken
   }
 }
