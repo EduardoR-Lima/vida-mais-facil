@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useCurrentSession } from '@/composables/useCurrentSession';
 import Logo from '../Logo.vue';
-import MenuIcon from '../Icons/MenuIcon.vue';
 import NavLink from './NavLink.vue';
 import CollapseButton from './CollapseButton.vue';
 
