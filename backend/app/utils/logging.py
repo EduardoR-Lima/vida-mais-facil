@@ -7,4 +7,4 @@ from ..config import get_log_config
 logging.config.dictConfig(get_log_config())
 
 # Criando instância global
-logger = logging.getLogger('video_storage')
+logger = logging.getLogger('vida_mais_facil')
