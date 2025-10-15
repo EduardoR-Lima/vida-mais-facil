@@ -70,7 +70,7 @@ export function useApiFetch() {
       throw err
 
     } finally {
-      if (!fetchState.isFailed.value) {
+      if (!fetchState.isFailed()) {
         fetchState.setToIdle()
       }
     }

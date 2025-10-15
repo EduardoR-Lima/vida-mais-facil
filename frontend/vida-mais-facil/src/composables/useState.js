@@ -11,9 +11,9 @@ export function useState(initialState = IDLE_STATE) {
   const setToIdle = () => { state.value = IDLE_STATE }
   const setToFailed = () => { state.value = FAILED_STATE }
 
-  const isLoading = computed(() => state.value == LOADING_STATE)
-  const isIdle = computed(() => state.value == IDLE_STATE)
-  const isFailed = computed(() => state.value == FAILED_STATE)
+  const isLoading = () => state.value == LOADING_STATE
+  const isIdle = () => state.value == IDLE_STATE
+  const isFailed = () => state.value == FAILED_STATE
 
   return {
     state,
