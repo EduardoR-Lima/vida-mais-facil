@@ -57,10 +57,12 @@ export function useApiFetch() {
     } catch (err) {
       fetchState.setToFailed()
       // Automaticamente notifica o usuário de que houve um problema no servidor
-      if (!(err instanceof HTTPRequestError) || err.status >= 500) {
+      // Todos os campos devem ser tratados antes de serem enviados para a api,
+      // portanto 422 representa um erro de integração
+      if (!(err instanceof HTTPRequestError) || err.status >= 500 || err.status == 422) {
         toast.pushToast(
           'danger',
-          'Ocorreu um erro ao tentar comunicar com o servidor'
+          'Falha ao tentar comunicar com o servidor'
         )
       }
 
@@ -68,7 +70,9 @@ export function useApiFetch() {
       throw err
 
     } finally {
-      fetchState.setToIdle()
+      if (!fetchState.isFailed.value) {
+        fetchState.setToIdle()
+      }
     }
   }
 
