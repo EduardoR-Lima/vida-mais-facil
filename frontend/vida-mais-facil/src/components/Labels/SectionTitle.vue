@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center max-md">
+  <div class="max-md">
     <p class="fw-bold fs-3 text-primary m-0 mb-2">
       <slot></slot>
     </p>

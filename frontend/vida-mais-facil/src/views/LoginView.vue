@@ -13,7 +13,7 @@ const { sendCredentials, loginState } = useLogin()
   <div class="vstack h-100 py-7 px-4">
     <BaseCard class="container-fluid max-sm m-auto px-4 py-5">
       
-      <SectionTitle class="mb-5">
+      <SectionTitle class="text-center mb-5">
         Bem-vindo de Volta!
 
         <template #subtitle>
