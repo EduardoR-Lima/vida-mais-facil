@@ -41,7 +41,7 @@ const { sendCredentials, loginState } = useLogin()
       </p>
 
       <ValidatedForm
-        @on-submit="sendCredentials"
+        @submit="sendCredentials"
         class="vstack gap-5">
         <!-- Campo do E-mail -->
         <div class="vstack gap-3">

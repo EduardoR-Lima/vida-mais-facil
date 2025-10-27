@@ -2,10 +2,10 @@
 import { useFormValidation } from '@/composables/useFormValidation';
 
 const emit = defineEmits([
-  'onSubmit',
+  'submit',
 ])
 
-const { validateForm } = useFormValidation(e => emit('onSubmit', e))
+const { validateForm } = useFormValidation(e => emit('submit', e))
 </script>
 
 <template>
