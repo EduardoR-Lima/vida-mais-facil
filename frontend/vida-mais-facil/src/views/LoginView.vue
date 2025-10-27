@@ -73,7 +73,7 @@ const { sendCredentials, loginState } = useLogin()
           </ValidatedInput>
 
         </div>
-        <LoadingSecondaryBtn :state="loginState">
+        <LoadingSecondaryBtn :is-loading="loginState.isLoading()">
           Entrar
         </LoadingSecondaryBtn>
       </ValidatedForm>

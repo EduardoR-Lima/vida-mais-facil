@@ -1,7 +1,7 @@
 <script setup>
 const props = defineProps({
-  state: {
-    type: Object,
+  isLoading: {
+    type: Boolean,
     required: true
   }
 })
@@ -11,9 +11,9 @@ const props = defineProps({
 <template>
   <button
     class="btn btn-secondary px-4 py-3 fw-bold text-white fs-6"
-    :disabled="state.isLoading()">
+    :disabled="isLoading">
     
-    <template v-if="state.isLoading()">
+    <template v-if="isLoading">
       <span
         class="spinner-border spinner-border-sm me-1"
         aria-hidden="true">
