@@ -1,0 +1,53 @@
+services:
+  mariadb:
+    image: mariadb:10.4.32
+    restart: always
+    profiles:
+      - backend
+      - production
+    env_file:
+      - ./mariadb/.env
+    volumes:
+      - mariadb-data:/var/lib/mysql
+
+  adminer:
+    image: adminer:latest
+    restart: always
+    profiles:
+      - admin
+    ports:
+      - 8080:8080
+
+  backend:
+    image: vida-mais-facil/backend
+    pull_policy: never
+    container_name: backend
+    profiles:
+      - backend
+      - production
+    depends_on:
+      - mariadb
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+      target: production-stage
+    ports:
+      - 8000:8000
+    env_file:
+      - ./backend/.env
+
+  frontend:
+    image: vida-mais-facil/frontend
+    pull_policy: never
+    container_name: frontend
+    profiles:
+      - production
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: production-stage
+    ports:
+      - 5000:80
+
+volumes:
+  mariadb-data:
