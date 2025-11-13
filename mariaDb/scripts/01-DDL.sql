@@ -10,11 +10,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema vida_mais_facil
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `vida_mais_facil` ;
-
--- -----------------------------------------------------
--- Schema vida_mais_facil
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `vida_mais_facil` DEFAULT CHARACTER SET utf8 ;
 USE `vida_mais_facil` ;
 

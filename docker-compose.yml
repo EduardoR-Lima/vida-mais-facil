@@ -1,10 +1,13 @@
 services:
   mariadb:
-    image: mariadb:10.4.32
+    image: vida-mais-facil/database
     restart: always
     profiles:
       - backend
       - production
+    build:
+      context: ./mariadb
+      dockerfile: Dockerfile
     env_file:
       - ./mariadb/.env
     volumes:
