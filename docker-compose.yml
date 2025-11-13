@@ -8,6 +8,12 @@ services:
     build:
       context: ./mariadb
       dockerfile: Dockerfile
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 3
     env_file:
       - ./mariadb/.env
     volumes:
@@ -29,7 +35,9 @@ services:
       - backend
       - production
     depends_on:
-      - mariadb
+      mariadb:
+        condition: service_healthy
+        restart: true
     build: 
       context: ./backend
       dockerfile: Dockerfile
@@ -45,6 +53,8 @@ services:
     container_name: frontend
     profiles:
       - production
+    depends_on:
+      - backend
     build: 
       context: ./frontend
       dockerfile: Dockerfile
